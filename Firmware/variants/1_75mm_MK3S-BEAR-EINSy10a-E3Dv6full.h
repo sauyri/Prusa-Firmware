@@ -39,7 +39,7 @@
 //#define E3D_PT100_BED_WITH_AMP
 //#define E3D_PT100_BED_NO_AMP
 
-#define  10
+#define kHOMING_CNT_MIN 10
 
 /*------------------------------------
  AXIS SETTINGS
