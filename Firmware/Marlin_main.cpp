@@ -2298,7 +2298,7 @@ void homeaxis(int axis, uint8_t cnt)
 #ifdef TMC2130
 		uint8_t orig = tmc2130_home_origin[axis];
 		uint8_t back = tmc2130_home_bsteps[axis];
-		if (tmc2130_home_enabled && (orig <= 63))
+		if (tmc2130_home_enabled && (orig <= kHOMING_CNT_MIN))
 		{
 			tmc2130_goto_step(axis, orig, 2, 1000, tmc2130_get_res(axis));
 			if (back > 0)
