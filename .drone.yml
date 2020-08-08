@@ -36,70 +36,17 @@ steps:
       - chmod +x lang/fw-clean.sh
       - chmod +x lang/lang-clean.sh
       - sed -i -e 's/#define FW_COMMIT_NR[ ]*[0-9]*/#define FW_COMMIT_NR '"$DRONE_BUILD_STARTED"'/' Firmware/Configuration.h
-      - bash -x PF-build.sh 1_75mm_MK3S-EINSy10a-E3Dv6full.h ALL $BUILD_TYPE
       - bash -x PF-build.sh 1_75mm_MK3S-BEAR-EINSy10a-E3Dv6full.h ALL $BUILD_TYPE
-      - bash -x PF-build.sh 1_75mm_MK3S-BEAR-SilverPSU-EINSy10a-E3Dv6full.h ALL $BUILD_TYPE
-      - bash -x PF-build.sh 1_75mm_MK3S-Bondtech-16-EINSy10a-E3Dv6full.h ALL $BUILD_TYPE
-      - bash -x PF-build.sh 1_75mm_MK3S-Bondtech-16-SliceHT-EINSy10a-E3Dv6full.h ALL $BUILD_TYPE
-      - bash -x PF-build.sh 1_75mm_MK3S-Bondtech-16-SilverPSU-EINSy10a-E3Dv6full.h ALL $BUILD_TYPE
-      - bash -x PF-build.sh 1_75mm_MK3S-Bondtech-16-SliceHT-SilverPSU-EINSy10a-E3Dv6full.h ALL $BUILD_TYPE
-      - bash -x PF-build.sh 1_75mm_MK3S-Bondtech-Mosquito-16-EINSy10a-E3Dv6full.h ALL $BUILD_TYPE
-      - bash -x PF-build.sh 1_75mm_MK3S-Bondtech-MosquitoMagnum-16-EINSy10a-E3Dv6full.h ALL $BUILD_TYPE
-      - bash -x PF-build.sh 1_75mm_MK3S-Bondtech-Mosquito-16-SliceHT-EINSy10a-E3Dv6full.h ALL $BUILD_TYPE
-      - bash -x PF-build.sh 1_75mm_MK3S-Bondtech-MosquitoMagnum-16-SliceHT-EINSy10a-E3Dv6full.h ALL $BUILD_TYPE
-      - bash -x PF-build.sh 1_75mm_MK3S-320Z-EINSy10a-E3Dv6full.h ALL $BUILD_TYPE
-      - bash -x PF-build.sh 1_75mm_MK3S-Bondtech-320Z-16-EINSy10a-E3Dv6full.h ALL $BUILD_TYPE
-      - bash -x PF-build.sh 1_75mm_MK3S-BEAR-320Z-EINSy10a-E3Dv6full.h ALL $BUILD_TYPE
-      - bash -x PF-build.sh 1_75mm_MK3-EINSy10a-E3Dv6full.h ALL $BUILD_TYPE
-      - bash -x PF-build.sh 1_75mm_MK3-Bondtech-16-EINSy10a-E3Dv6full.h ALL $BUILD_TYPE
-      - bash -x PF-build.sh 1_75mm_MK3-BEAR-EINSy10a-E3Dv6full.h ALL $BUILD_TYPE
-      - bash -x PF-build.sh 1_75mm_MK3-320Z-EINSy10a-E3Dv6full.h ALL $BUILD_TYPE
-      - bash -x PF-build.sh 1_75mm_MK3-Bondtech-320Z-16-EINSy10a-E3Dv6full.h ALL $BUILD_TYPE
-      - bash -x PF-build.sh 1_75mm_MK25S-RAMBo13a-E3Dv6full.h ALL $BUILD_TYPE
-      - bash -x PF-build.sh 1_75mm_MK25S-RAMBo10a-E3Dv6full.h ALL $BUILD_TYPE
-      - bash -x PF-build.sh 1_75mm_MK25S-BEAR-RAMBo13a-E3Dv6full.h ALL $BUILD_TYPE
-      - bash -x PF-build.sh 1_75mm_MK25S-BEAR-RAMBo10a-E3Dv6full.h ALL $BUILD_TYPE
-      - bash -x PF-build.sh 1_75mm_MK25S-Bondtech-16-RAMBo10a-E3Dv6full.h ALL $BUILD_TYPE
-      - bash -x PF-build.sh 1_75mm_MK25S-Bondtech-16-SliceHT-RAMBo10a-E3Dv6full.h ALL $BUILD_TYPE
-      - bash -x PF-build.sh 1_75mm_MK25S-Bondtech-16-RAMBo13a-E3Dv6full.h ALL $BUILD_TYPE
-      - bash -x PF-build.sh 1_75mm_MK25S-Bondtech-16-SliceHT-RAMBo13a-E3Dv6full.h ALL $BUILD_TYPE
-      - bash -x PF-build.sh 1_75mm_MK25-RAMBo13a-E3Dv6full.h ALL $BUILD_TYPE
-      - bash -x PF-build.sh 1_75mm_MK25-RAMBo10a-E3Dv6full.h ALL $BUILD_TYPE
-      - bash -x PF-build.sh 1_75mm_MK25-BEAR-RAMBo13a-E3Dv6full.h ALL $BUILD_TYPE
-      - bash -x PF-build.sh 1_75mm_MK25-BEAR-RAMBo10a-E3Dv6full.h ALL $BUILD_TYPE
-      - bash -x PF-build.sh 1_75mm_MK25-Bondtech-16-RAMBo13a-E3Dv6full.h ALL $BUILD_TYPE
-      - bash -x PF-build.sh 1_75mm_MK25-Bondtech-16-RAMBo10a-E3Dv6full.h ALL $BUILD_TYPE
-
       ## Make without LA 1.0 Compatibility Mode
       - sed -i -e 's/\\/\\/#define LA_NOCOMPAT/#define LA_NOCOMPAT/' Firmware/Configuration_adv.h
-      - cp $DRONE_WORKSPACE_BASE/Prusa-Firmware/Firmware/variants/1_75mm_MK3S-BEAR-SilverPSU-EINSy10a-E3Dv6full.h $DRONE_WORKSPACE_BASE/Prusa-Firmware/Firmware/variants/1_75mm_MK3S-BEAR-SilverPSU-xLACompat-EINSy10a-E3Dv6full.h
-      - bash -x PF-build.sh 1_75mm_MK3S-BEAR-SilverPSU-xLACompat-EINSy10a-E3Dv6full.h ALL $BUILD_TYPE
+      - cp $DRONE_WORKSPACE_BASE/Prusa-Firmware/Firmware/variants/1_75mm_MK3S-BEAR-EINSy10a-E3Dv6full.h $DRONE_WORKSPACE_BASE/Prusa-Firmware/Firmware/variants/1_75mm_MK3S-BEAR-xLACompat-EINSy10a-E3Dv6full.h
+      - bash -x PF-build.sh 1_75mm_MK3S-BEAR-xLACompat-EINSy10a-E3Dv6full.h ALL $BUILD_TYPE
     when:
       event:
        - push
        - tag
        - pull_request
   
-  - name: skele-build
-    image: vertigo235/fw-build:1
-    environment:
-        BUILD_TYPE: GOLD
-    commands:
-      - git reset --hard
-      - cd $DRONE_WORKSPACE_BASE
-      - wget https://raw.githubusercontent.com/nato2k/Skelestruder_Firmware_Patch/master/skele_patch.py
-      - python skele_patch.py 490 16
-      - cp ./Prusa-Firmware/Firmware/variants/1_75mm_MK3-EINSy10a-E3Dv6full.h ./Prusa-Firmware/Firmware/variants/1_75mm_MK3-Skelestruder-16-EINSy10a-E3Dv6full.h
-      - cd $DRONE_WORKSPACE
-      - bash -x PF-build.sh 1_75mm_MK3-Skelestruder-16-EINSy10a-E3Dv6full.h ALL $BUILD_TYPE
-    when:
-      event:
-       - push
-       - tag
-       - pull_request
-    depends_on:
-      - build
-
   - name: prepare-hex
     image: vertigo235/fw-build:1
     commands:
@@ -107,8 +54,8 @@ steps:
       - mkdir out
       - mkdir fileshare
       - cd $DRONE_WORKSPACE_BASE/PF-build-hex
-      - mv `find -name "*.zip"` $DRONE_WORKSPACE/out
-      - mv `find -name "*.hex"` $DRONE_WORKSPACE/out
+      - find -type f -name "*.zip" -exec mv -t $DRONE_WORKSPACE/out {} +
+      - find -type f -name "*.hex" -exec mv -t $DRONE_WORKSPACE/out {} +
       - cd $DRONE_WORKSPACE/fileshare
       - zip -q -j prusa3d_fw_$(git rev-parse --short HEAD).zip $DRONE_WORKSPACE/out/*.*
 
@@ -119,7 +66,6 @@ steps:
        - pull_request
     depends_on:
       - build
-      - skele-build
 
   - name: transfersh
     image: vertigo235/fw-build:1
@@ -160,7 +106,7 @@ steps:
       draft: true    
       checksum: md5
       files: 
-        - out/*.*
+        - $DRONE_WORKSPACE/out/*.*
     when:
       event: 
         - tag
