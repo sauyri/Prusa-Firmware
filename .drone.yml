@@ -37,6 +37,7 @@ steps:
       - chmod +x lang/lang-clean.sh
       - sed -i -e 's/#define FW_COMMIT_NR[ ]*[0-9]*/#define FW_COMMIT_NR '"$DRONE_BUILD_STARTED"'/' Firmware/Configuration.h
       - bash -x PF-build.sh 1_75mm_MK3S-BEAR-EINSy10a-E3Dv6full.h ALL $BUILD_TYPE
+      - bash -x PF-build.sh 1_75mm_MK3S-EINSy10a-E3Dv6full.h ALL $BUILD_TYPE
       ## Make without LA 1.0 Compatibility Mode
       - sed -i -e 's/\\/\\/#define LA_NOCOMPAT/#define LA_NOCOMPAT/' Firmware/Configuration_adv.h
       - cp $DRONE_WORKSPACE_BASE/Prusa-Firmware/Firmware/variants/1_75mm_MK3S-BEAR-EINSy10a-E3Dv6full.h $DRONE_WORKSPACE_BASE/Prusa-Firmware/Firmware/variants/1_75mm_MK3S-BEAR-xLACompat-EINSy10a-E3Dv6full.h
