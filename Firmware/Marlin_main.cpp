@@ -8427,7 +8427,169 @@ Sigma_Exit:
     }
     break;
 
+	    //Kuo mCodes
+case 919: //! M919 - Set TMC2130 toff Kuo
+     {
+     uint8_t a = 0;
+     uint8_t theValue;
+    
+     if (code_seen('X')) 
+     {
+      a = 0;
+      theValue = code_value();
+     }
+      if (code_seen('Y')) 
+     {
+      a = 1;
+      theValue = code_value();
+     }
+      if (code_seen('Z')) 
+     {
+      a = 2;
+      theValue = code_value();
+     }
+      if (code_seen('E')) 
+     {
+      a = 3;
+      theValue = code_value();
+     }
+     
+     tmc2130_chopper_config[a].toff = theValue;
+     printf_P(_N("tmc2130_toff[%c]=%d\n"), "XYZE"[a], tmc2130_chopper_config[a].toff);  
+
+     tmc2130_setup_chopper(a, tmc2130_mres[a], tmc2130_current_h[a], tmc2130_current_r[a]);
+ 
+    }
+    break;
+
+ case 920: //! M920 - Set TMC2130 hstr Kuo
+ {
+     uint8_t a = 0;
+     uint8_t theValue;
+    
+     if (code_seen('X')) 
+     {
+      a = 0;
+      theValue = code_value();
+     }
+      if (code_seen('Y')) 
+     {
+      a = 1;
+      theValue = code_value();
+     }
+      if (code_seen('Z')) 
+     {
+      a = 2;
+      theValue = code_value();
+     }
+      if (code_seen('E')) 
+     {
+      a = 3;
+      theValue = code_value();
+     }
+
+     tmc2130_chopper_config[a].hstr = theValue;
+     printf_P(_N("tmc2130_hstr[%c]=%d\n"), "XYZE"[a], tmc2130_chopper_config[a].hstr);  
+ 
+     tmc2130_setup_chopper(a, tmc2130_mres[a], tmc2130_current_h[a], tmc2130_current_r[a]);
+ 
+    }
+    break;
+
+ case 921: //! M921 - Set TMC2130 hend Kuo
+    {
+     uint8_t a = 0;
+     uint8_t theValue;
+    
+     if (code_seen('X')) 
+     {
+      a = 0;
+      theValue = code_value();
+     }
+      if (code_seen('Y')) 
+     {
+      a = 1;
+      theValue = code_value();
+     }
+      if (code_seen('Z')) 
+     {
+      a = 2;
+      theValue = code_value();
+     }
+      if (code_seen('E')) 
+     {
+      a = 3;
+      theValue = code_value();
+     }
+
+     tmc2130_chopper_config[a].hend = theValue;
+     printf_P(_N("tmc2130_hend[%c]=%d\n"), "XYZE"[a], tmc2130_chopper_config[a].hend);  
+
+     tmc2130_setup_chopper(a, tmc2130_mres[a], tmc2130_current_h[a], tmc2130_current_r[a]);
+    }
+    break;
+    
+ case 922: //! M922 - Set TMC2130 tbl Kuo
+    {
+     uint8_t a = 0;
+     uint8_t theValue;
+    
+     if (code_seen('X')) 
+     {
+      a = 0;
+      theValue = code_value();
+     }
+      if (code_seen('Y')) 
+     {
+      a = 1;
+      theValue = code_value();
+     }
+      if (code_seen('Z')) 
+     {
+      a = 2;
+      theValue = code_value();
+     }
+      if (code_seen('E')) 
+     {
+      a = 3;
+      theValue = code_value();
+     }
+
+     tmc2130_chopper_config[a].tbl = theValue;
+     printf_P(_N("tmc2130_tbl[%c]=%d\n"), "XYZE"[a], tmc2130_chopper_config[a].tbl);  
+    
+     tmc2130_setup_chopper(a, tmc2130_mres[a], tmc2130_current_h[a], tmc2130_current_r[a]);
+ 
+    }
+    break;
+    
+    //end Kuo m-Codes enabled by TMC2130_SERVICE_CODES_M910_M918 ===
+
 #endif //TMC2130_SERVICE_CODES_M910_M918
+
+//Kuo MCodes that are always available
+  case 924: //! M924 - Set sg_thrs_home Kuo
+    {
+    if (code_seen('X')) tmc2130_sg_thr_home[X_AXIS] = code_value();
+    if (code_seen('Y')) tmc2130_sg_thr_home[Y_AXIS] = code_value();
+    if (code_seen('Z')) tmc2130_sg_thr_home[Z_AXIS] = code_value();
+    if (code_seen('E')) tmc2130_sg_thr_home[E_AXIS] = code_value();
+    for (uint8_t a = X_AXIS; a <= E_AXIS; a++)
+      printf_P(_N("tmc2130_sg_thr_home[%c]=%d\n"), "XYZE"[a], tmc2130_sg_thr_home[a]);
+    }
+    break;
+
+
+  case 925: //! M925 - Set homing feed rate Kuo
+    {
+    if (code_seen('X')) homing_feedrate[X_AXIS] = code_value();
+    if (code_seen('Y')) homing_feedrate[Y_AXIS] = code_value();
+    if (code_seen('Z')) homing_feedrate[Z_AXIS] = code_value();
+    for (uint8_t a = X_AXIS; a <= Z_AXIS; a++)
+      printf_P(_N("homing_feedrate[%c]=%f\n"), "XYZE"[a], homing_feedrate[a]);
+    }
+    break;
+//Kuo end MCodes that are always available ===
 
     /*!
 	### M350 - Set microstepping mode <a href="https://reprap.org/wiki/G-code#M350:_Set_microstepping_mode">M350: Set microstepping mode</a>
